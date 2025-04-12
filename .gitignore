@@ -1,0 +1,9 @@
+coverage_html_report/
+build/*
+dist/*
+*venv*
+*.idea*
+__pycache__
+.vscode
+.DS_Store
+*egg-info*
