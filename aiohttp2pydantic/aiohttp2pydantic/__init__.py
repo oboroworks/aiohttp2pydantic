@@ -9,7 +9,7 @@ T = TypeVar("T", bound=BaseModel)
 
 
 class PydanticAiohttpRequest:
-    def __init__(self, request: web.Request, data: BaseModel):
+    def __init__(self, request: web.Request, data: Type[T]):
         self.request = request
         self.data = data
 
