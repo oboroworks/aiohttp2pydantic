@@ -3,12 +3,18 @@ from pydantic import BaseModel
 from typing import Type
 from aiohttp import web
 
+from typing import TypeVar, Callable
+
+T = TypeVar("T", bound=BaseModel)
+
+
 class PydanticAiohttpRequest:
     def __init__(self, request: web.Request, data: BaseModel):
         self.request = request
         self.data = data
 
-def aiohttp_to_pydantic(model: Type[BaseModel]):
+
+def aiohttp_to_pydantic(model: Type[T]) -> Callable:
     def decorator(handler):
         @wraps(handler)
         async def wrapper(request: web.Request):
